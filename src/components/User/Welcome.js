@@ -1,8 +1,11 @@
+import { getAuth } from 'firebase/auth';
 import React from 'react';
-import useFirebase from '../../hooks/useFirebase';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import app from '../../firebase.init';
 
+const auth = getAuth(app);
 const Welcome = () => {
-    const {user} = useFirebase();
+    const [user] = useAuthState(auth) 
     return (
         <div>
            <h2>Welcome! {user?.displayName}</h2>

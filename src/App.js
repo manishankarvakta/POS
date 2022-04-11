@@ -4,6 +4,8 @@ import About from './components/About/About';
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import NotFound from './components/NotFound/NotFound';
+import POS from './components/POS/POS';
+import RequireAuth from './components/RuquireAuth/RequireAuth';
 import Login from './components/User/Login';
 import Register from './components/User/Register';
 import Welcome from './components/User/Welcome';
@@ -17,6 +19,11 @@ function App() {
 
       <Routes>
           <Route path="/" element={<Home/>} />
+          <Route path="/pos" element={            
+            <RequireAuth>
+              <POS />                
+            </RequireAuth>
+          } />
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />} />
           <Route path="/welcome" element={<Welcome />} />
