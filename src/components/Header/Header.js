@@ -4,6 +4,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import app from '../../firebase.init';
 import RequireAuth from '../RuquireAuth/RequireAuth';
+import logo from '../../Logo-tcm.png';
 
 import './Header.css';
 
@@ -14,14 +15,16 @@ const Header = () => {
     return (
         <nav>
             {/* <Link to="/">Home</Link> */}
-            <Link to="/pos">POS</Link>
+            <Link to="/pos">
+                <img src={logo} width='150' alt="TCM"/>
+            </Link>
             {/* <Link to="/about">About</Link> */}
             {
                 user?.uid
                     ?
                     <>
                         {/* <Link to="/welcome">User</Link> */}
-                        <button onClick={()=> signOut(auth)}>Sign Out</button>
+                        <button className='btn btn-dark align-right' onClick={()=> signOut(auth)}>Sign Out</button>
                     </>
                     :
                     <>
