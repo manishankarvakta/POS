@@ -18,16 +18,16 @@ function App() {
       <Header />
 
       <Routes>
-          <Route path="/" element={<Home/>} />
+          <Route path="/" element={<Login />} />
           <Route path="/pos" element={            
             <RequireAuth>
               <POS />                
             </RequireAuth>
           } />
-          <Route path="/about" element={<About />} />
+          {/* <Route path="/about" element={<About />} /> */}
           <Route path="/login" element={<Login />} />
-          <Route path="/welcome" element={<Welcome />} />
-          <Route path="/register" element={<Register />} />
+          {/* <Route path="/welcome" element={<Welcome />} />
+          <Route path="/register" element={<Register />} /> */}
           <Route path="*" element={<NotFound />} />
       </Routes>
     </div>

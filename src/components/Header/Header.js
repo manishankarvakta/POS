@@ -13,20 +13,20 @@ const Header = () => {
     console.log(user)
     return (
         <nav>
-            <Link to="/">Home</Link>
+            {/* <Link to="/">Home</Link> */}
             <Link to="/pos">POS</Link>
-            <Link to="/about">About</Link>
+            {/* <Link to="/about">About</Link> */}
             {
                 user?.uid
                     ?
                     <>
-                        <Link to="/welcome">User</Link>
+                        {/* <Link to="/welcome">User</Link> */}
                         <button onClick={()=> signOut(auth)}>Sign Out</button>
                     </>
                     :
                     <>
                         <Link to="/login">Login</Link>
-                        <Link to="/register">Register</Link>
+                        {/* <Link to="/register">Register</Link> */}
                     </>
             }
 
