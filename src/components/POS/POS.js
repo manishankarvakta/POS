@@ -6,7 +6,7 @@ const POS = () => {
     let i = 1;
     const [cart, setCart] = useState([]);
     const [products, setProducts] = useState([]);
-    const [searchResult, setSearchResult] = useState([])
+    const [searchResult, setSearchResult] = useState([]);
 
     useEffect(() => {
         fetch('products.json')
@@ -36,16 +36,18 @@ const POS = () => {
         }
         setSearchResult(searchProducts());
 
-        const getProduct = products.find(({ EAN }) => EAN === pCode)
+        const getProduct = products.find(({ EAN }) => EAN === pCode) ||products.find(({ articleCode }) => articleCode === parseInt(pCode))// //  
         if (getProduct) {
             const newCart = [...cart, getProduct];
             setCart(newCart);
+            setSearchResult([]);
             e.target.value = '';
+
             
         }
 
         console.log(pCode);
-        console.log(searchResult);
+        console.log(getProduct);
 
     }
 
@@ -97,7 +99,7 @@ const POS = () => {
                     <div className="row">
                         <div className="col-md-12">
                             <input type="text" onChange={handleProductOnChange} id="productSearch" placeholder='product' className="form-control" />
-                            <div className="search-wrapper w-50">
+                            <div className="search-wrapper w-70">
                                 {
                                     searchResult.length > 0 ?
                                     <ul>
@@ -115,7 +117,7 @@ const POS = () => {
                             </div>
                         </div>
                         <div className="col-md-12">
-                            <table className="table mt-5">
+                            <table className="table mt-3">
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
@@ -125,7 +127,7 @@ const POS = () => {
                                         <th scope="col">Sub-Total</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody className='cart-list'>
                                     {
 
                                         cart.map(cartItem =>
@@ -145,8 +147,8 @@ const POS = () => {
                 </div>
                 <div className="col-md-3">
                     <Header></Header>
-                    <div className="card">
-                        <div className="card-body mb-5">
+                    <div className="card sticky-md-top">
+                        <div className="card-body mb-5 ">
                             <h5 className="card-title">Finalize Sale</h5>
                             <hr />
                             <p className="card-text"><b>Total Item: </b> <span className='float-end'> 10</span></p>

@@ -13,7 +13,7 @@ const Login = () => {
     const from = location?.state?.from.pathname || '/';
 
     const handleGoogleSignIn = ()=>{
-        // console.log(location);
+        console.log(from);
         signInWithGoogle()
         .then(()=>{
             navigate(from, {replace:true});

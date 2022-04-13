@@ -11,7 +11,8 @@ import './Header.css';
 const Header = () => {
     const auth = getAuth(app);
     const [user, loading, error] = useAuthState(auth);
-    console.log(user)
+    localStorage.setItem('user', JSON.stringify(user.uid));
+    // console.log(user)
     return (
         <nav>
             {/* <Link to="/">Home</Link> */}
