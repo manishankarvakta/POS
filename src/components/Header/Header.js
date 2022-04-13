@@ -10,7 +10,7 @@ import './Header.css';
 
 const Header = () => {
     const auth = getAuth(app);
-    const [user, loading, error] = useAuthState(auth);
+    const [user] = useAuthState(auth);
     localStorage.setItem('user', JSON.stringify(user.uid));
     // console.log(user)
     return (
